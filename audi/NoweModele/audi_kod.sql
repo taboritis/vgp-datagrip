@@ -1,5 +1,8 @@
 USE AUDI_CCWS;
 
-SELECT * FROM configuration WHERE audi_code = 'A5G7LD35'
+SELECT *
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE COLUMN_NAME like '%model%'
 
-UPDATE configuration SET is_active = 0 WHERE audi_code = 'A5G7LD35'
+SELECT *
+FROM cis_model;
