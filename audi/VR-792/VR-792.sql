@@ -54,8 +54,8 @@ WHERE e.id IS NULL
 
 -- nie ma "zombie", ale trzeba założyć FK
 
-DELETE
-FROM equipment
+/*
+DELETE FROM equipment
 WHERE id IN (
     SELECT e.id
     FROM equipment e
@@ -63,9 +63,19 @@ WHERE id IN (
     WHERE c.id IS NULL
 )
 
-
-
 ALTER TABLE equipment
     ADD CONSTRAINT equipment_configuration_id_fk
         FOREIGN KEY (configuration_id) REFERENCES configuration (id)
             ON DELETE CASCADE
+*/
+
+
+SELECT *
+FROM sys.foreign_keys
+WHERE object_id = OBJECT_ID(N'equipment_configuration_id_fk')
+  AND parent_object_id = OBJECT_ID(N'dbo.equipment')
+
+
+SELECT *
+FROM migration_versions
+ORDER BY version DESC
