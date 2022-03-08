@@ -33,6 +33,10 @@ technical_data_value
 ufo_token
 - ma FK on delete cascade
 
+-- equipment_include - nie ma FK do equipment
+-- nie ma "zombie", ale trzeba założyć FK
+
+
 */
 
 SELECT TOP 10 e.created
@@ -42,19 +46,8 @@ WHERE 1 = 1
   AND c.id IS NULL
 ORDER BY e.created DESC
 
--- 1370
-
-
--- equipment_include - nie ma FK do equipment
-
-SELECT COUNT(ei.equipment_id) AS brakujace_equipment_id
-FROM equipment_include ei
-         LEFT JOIN equipment e ON e.id = ei.equipment_id
-WHERE e.id IS NULL
-
--- nie ma "zombie", ale trzeba założyć FK
-
 /*
+
 DELETE FROM equipment
 WHERE id IN (
     SELECT e.id
