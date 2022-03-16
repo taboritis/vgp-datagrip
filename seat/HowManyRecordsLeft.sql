@@ -1,3 +1,5 @@
+use SEAT_GO_DEV
+
 WITH records_left AS (
     SELECT COUNT(*) AS result
     FROM motor_configuration mc
