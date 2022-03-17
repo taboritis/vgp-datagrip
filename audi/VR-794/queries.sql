@@ -1,4 +1,4 @@
-USE AUDI_CCWS_DEV
+USE AUDI_CCWS
 
 BEGIN TRANSACTION
 
@@ -19,11 +19,7 @@ FROM cis_model
 WHERE model_year < 2019
 
 /*
-DELETE cce
-FROM cis_car_equipment cce
-         INNER JOIN cis_car cc
-                    ON cce.cis_car_id = cc.id
-                        AND cc.created < '2019-01-10'
+DELETE cce FROM cis_car_equipment cce INNER JOIN cis_car cc ON cce.cis_car_id = cc.id AND cc.created < '2019-01-10'
 
 
 DELETE
